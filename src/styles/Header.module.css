@@ -1,0 +1,62 @@
+.containerHeader {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .menuIcon {
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  .menu {
+    display: none;  /* Le menu est caché par défaut */
+    flex-direction: column;  /* Affiche les éléments du menu en colonne */
+    align-items: flex-start;
+    position: absolute;
+    top: 70px;  /* Ajuste la position verticale du menu, en dessous de l'icône burger */
+    left: 0;
+    background-color: #fff;  /* Fond blanc, à personnaliser */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 50vw;  /* Largeur du menu, à ajuster selon ton design */
+    
+  }
+  
+  .menuOpen {
+    display: flex;  /* Affiche le menu quand il est ouvert */
+  }
+  
+  .menu a {
+    padding: 10px;
+    text-decoration: none;
+    color: #323272;  /* Change la couleur des liens du menu */
+    font-size: 16px;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .menu a:hover {
+    background-color: #f0f0f0;  /* Changer la couleur du fond au survol des liens */
+  }
+  
+  /* .logo {
+    font-size: 18px;
+    font-weight: bold;
+  } */
+  
+  .auth button {
+    padding: 8px 16px;
+    background-color: #323272;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .auth button:hover {
+    background-color:  #56567c;;
+  }
+  

@@ -1,0 +1,16 @@
+.containerFooter{
+text-align: center;
+
+
+}
+.pagesLinks{
+    display: flex;
+justify-content: space-around;
+align-items: center;
+margin-bottom: 20px;
+flex-wrap: wrap;
+}
+.copyright{
+    margin: 10px;
+    color:#9e9eb9
+}
