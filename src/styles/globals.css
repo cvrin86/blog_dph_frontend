@@ -22,16 +22,30 @@ a{
 button{
 border: none;
 font-size: 1.2rem;
-background-color: #323272;
-color:#f1dada;
+background-color: #2a2a68;
+color:#f1d7b8;
 border-radius: 5px;
-padding:2px 5px;
+padding:5px 10px;
 cursor: pointer;
+}
+button:hover{
+  background-color: #9090bb; ;
 }
 hr{
  
   width: 90px;
   color:#323272;
+  color:#d17307;
   margin: 0 auto;
 }
+label{
+  padding-right: 40px;
+}
 
+input{
+  width:300px;
+  padding-bottom: 10px;
+margin-bottom: 30px;
+
+
+}

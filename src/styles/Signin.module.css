@@ -1,0 +1,15 @@
+
+
+.containerSignin{
+    margin: 20px;
+    text-align: center;
+   
+}
+.formSignin{
+   margin:60px
+}
+
+.errorMsg{
+    color:rgb(211, 44, 44);
+
+}

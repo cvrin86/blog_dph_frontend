@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import styles from "../../styles/Header.module.css";
 import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout } from "@/reducers/user";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,6 +17,40 @@ export default function Header() {
   const handleMenuClose = () => {
     setIsMenuOpen(false);
   };
+
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value); // Utilisation de Redux pour l'état de l'utilisateur
+
+  // Fonction de déconnexion
+  async function handleLogout() {
+    const res = await fetch("http://localhost:5000/users/logout", {
+      method: "POST",
+      credentials: "include", // Garde les cookies pour la session
+    });
+    await res.json(); // Traite la réponse
+    dispatch(logout()); // Déconnecte l'utilisateur dans Redux
+  }
+
+  // Affichage conditionnel de l'authentification
+  let authSection;
+  if (user.isConnected) {
+    authSection = (
+      <div className={styles.auth}>
+        <p style={{ fontSize: "1.2rem" }}>
+          Bienvenue<span style={{ fontSize: "1.5rem",color:"teal" }}> {user.username}</span>
+        </p>
+        <button onClick={handleLogout}>Se déconnecter</button>
+      </div>
+    );
+  } else {
+    authSection = (
+      <div className={styles.auth}>
+        <Link href="/signin">
+          <button>Se connecter</button>
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <header className={styles.containerHeader}>
@@ -63,17 +99,11 @@ export default function Header() {
 
       {/* Logo */}
       <div className={styles.logo}>
-       
-        <Image src="/logo.png"
-        width={100}
-        height={80} />
-      
+        <Image src="/logo.png" width={100} height={80} alt="logo" />
       </div>
 
-      {/* Bouton d'inscription */}
-      <div className={styles.auth}>
-        <button>S'inscrire</button>
-      </div>
+      {/* Affichage du bouton de connexion ou déconnexion */}
+      {authSection}
     </header>
   );
 }
