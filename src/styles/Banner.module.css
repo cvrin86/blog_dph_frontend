@@ -1,0 +1,47 @@
+/* Container pour la bannière */
+.bannerContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh; 
+    overflow: hidden;
+  }
+  
+ 
+  .bannerImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .bannerTitle {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 2rem; 
+    text-align: center;
+    font-weight: bold;
+    z-index: 1; 
+  }
+  .link {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: black;
+    padding: 5px 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    z-index: 5;
+  }
+  .link:hover {
+    background-color: #7e4141;
+  }
+  

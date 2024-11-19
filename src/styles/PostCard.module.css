@@ -1,0 +1,33 @@
+.postCardContainer {
+    position: relative;
+    text-align: center;
+    padding:10px;
+    margin:20px;
+    width: 250px;
+    height: 400px;
+    overflow: hidden;
+    border: 1px solid gray;
+    background-color: #ffffff;
+    border-radius: 10px;
+  }
+  .imagePostCard {
+    height: 290px;
+    width: 100%;
+    object-fit: cover;
+  }
+  .titlePost {
+    font-size: 1.3rem;
+    margin: 10px 0;
+  }
+  .readMoreBtn {
+    margin: 20px 0;
+    border: none;
+    background-color: #797697;
+    color:#eaeef1;
+    padding: 5px 20px;
+    border-radius: 5px;
+  }
+  .readMoreBtn a {
+    color: #ecdcdc;
+    font-size: 1.2rem;
+  }
