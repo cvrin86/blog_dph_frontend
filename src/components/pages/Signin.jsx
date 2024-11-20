@@ -33,7 +33,7 @@ export default function Signin() {
     if (dataSignin.result) {
       resetSigninForm();
       toast.success("Account successfully connected");
-      router.push("/home");
+      router.push("/dashboard");
       dispatch(login(data.username)); // Connecte l'utilisateur
     } else {
       setErrorMsg("Wrong username / password");
@@ -46,7 +46,10 @@ export default function Signin() {
   return (
     <div className={styles.containerSignin}>
       <h1>Se connecter</h1>
-      <form className={styles.formSignin} onSubmit={handleSigninSubmit(handleSignin)}>
+      <form
+        className={styles.formSignin}
+        onSubmit={handleSigninSubmit(handleSignin)}
+      >
         <div>
           <label htmlFor="">Votre username</label>
           <input
@@ -55,7 +58,9 @@ export default function Signin() {
             {...signinForm("username", { required: "Username is required" })}
           />
           {signinFormError.username && (
-            <span className={styles.errorMsg}>{signinFormError.username.message}</span>
+            <span className={styles.errorMsg}>
+              {signinFormError.username.message}
+            </span>
           )}
         </div>
 
@@ -67,7 +72,9 @@ export default function Signin() {
             {...signinForm("password", { required: "Password is required" })}
           />
           {signinFormError.password && (
-            <span className={styles.errorMsg}>{signinFormError.password.message}</span>
+            <span className={styles.errorMsg}>
+              {signinFormError.password.message}
+            </span>
           )}
         </div>
 
@@ -78,7 +85,15 @@ export default function Signin() {
       <div>
         <span>Vous n'avez pas de compte? S'inscrire ici: </span>
         <Link href="/signup">
-          <button style = {{border : "none", backgroundColor:"transparent",color:"#d17307"}}>S'inscrire</button>
+          <button
+            style={{
+              border: "none",
+              backgroundColor: "transparent",
+              color: "#d17307",
+            }}
+          >
+            S'inscrire
+          </button>
         </Link>
       </div>
     </div>

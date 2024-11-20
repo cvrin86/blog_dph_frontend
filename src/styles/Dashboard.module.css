@@ -1,0 +1,16 @@
+
+.containerDashboard{
+    height: 100vh;
+    width: 100vw;
+   text-align: center;
+    background-color: rgba(58, 119, 104,0.3);
+}
+.dashTitle{
+    font-size: 50px;
+    opacity:0.1;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', serif;
+    color:#1cb123;
+}
+.createPostBtn{
+   padding: 30px;
+}

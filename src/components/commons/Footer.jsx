@@ -5,7 +5,7 @@ import styles from "../../styles/Footer.module.css";
 
 export default function Footer() {
   const date = new Date();
-  console.log(date);
+  // console.log(date);
   return (
     <footer className={styles.containerFooter}>
       <div>

@@ -33,7 +33,7 @@ export default function Signup() {
     if (dataSignup.result) {
       resetSignupForm();
       toast.success("Account successfully created");
-      router.push("/home");
+      router.push("/dashboard");
       dispatch(login(data.username)); // Connecte l'utilisateur
     } else {
       console.error("Username already exists, please use another one", {
@@ -115,10 +115,17 @@ export default function Signup() {
       <div>
         <span>Vous etes dejà inscrit? Click ici: </span>
         <Link href="/signin">
-          <button style = {{border : "none", backgroundColor:"transparent",color:"#d17307"}}>Se connecter</button>
+          <button
+            style={{
+              border: "none",
+              backgroundColor: "transparent",
+              color: "#d17307",
+            }}
+          >
+            Se connecter
+          </button>
         </Link>
       </div>
     </div>
   );
 }
-

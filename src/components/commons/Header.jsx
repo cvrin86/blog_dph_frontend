@@ -4,9 +4,11 @@ import styles from "../../styles/Header.module.css";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "@/reducers/user";
+import { useRouter } from "next/router";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
 
   // Fonction pour ouvrir le menu
   const handleMenuOpen = () => {
@@ -29,6 +31,7 @@ export default function Header() {
     });
     await res.json(); // Traite la réponse
     dispatch(logout()); // Déconnecte l'utilisateur dans Redux
+    router.push("/home");
   }
 
   // Affichage conditionnel de l'authentification
@@ -37,7 +40,11 @@ export default function Header() {
     authSection = (
       <div className={styles.auth}>
         <p style={{ fontSize: "1.2rem" }}>
-          Bienvenue<span style={{ fontSize: "1.5rem",color:"teal" }}> {user.username}</span>
+          Salut{" "}
+          <span style={{ fontSize: "1.5rem", color: "teal" }}>
+            {" "}
+            {user.username}
+          </span>
         </p>
         <button onClick={handleLogout}>Se déconnecter</button>
       </div>
@@ -91,7 +98,7 @@ export default function Header() {
 
       {/* Menu vertical */}
       <nav className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : ""}`}>
-        <Link href="/home">Accueil</Link>
+        <Link href="/">Accueil</Link>
         <Link href="/blog">Blog</Link>
         <Link href="/about">A propos</Link>
         <Link href="/contact">Nous contacter</Link>

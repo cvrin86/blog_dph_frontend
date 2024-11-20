@@ -21,6 +21,8 @@ export default function Home() {
     getPosts();
   }, []);
 
+  console.log(posts);
+
   return (
     <>
       <Banner post={recentPost} />
