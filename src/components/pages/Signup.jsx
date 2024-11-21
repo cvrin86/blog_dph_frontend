@@ -43,15 +43,19 @@ export default function Signup() {
   };
 
   return (
-    <div className={styles.containerSignup}>
-      <h1>Inscription</h1>
+    <div className={styles.signupContainer}>
+      <h1 className={styles.signupTitle}>Inscription</h1>
       <form
-        className={styles.formSignup}
+        className={styles.signupForm}
         onSubmit={handleSignupSubmit(handleSignup)}
       >
-        <div>
-          <label htmlFor="">Votre username</label>
+        <div className={styles.signupFormField}>
+          <label className={styles.signupFormLabel} htmlFor="username">
+            Votre username
+          </label>
           <input
+            id="username"
+            className={styles.signupFormInput}
             type="text"
             placeholder="Username"
             {...signupForm("username", {
@@ -68,9 +72,14 @@ export default function Signup() {
             </span>
           )}
         </div>
-        <div>
-          <label htmlFor="">Votre email</label>
+
+        <div className={styles.signupFormField}>
+          <label className={styles.signupFormLabel} htmlFor="email">
+            Votre email
+          </label>
           <input
+            id="email"
+            className={styles.signupFormInput}
             type="email"
             placeholder="Email"
             {...signupForm("email", {
@@ -83,9 +92,14 @@ export default function Signup() {
             </span>
           )}
         </div>
-        <div>
-          <label htmlFor="">Votre mot de passe</label>
+
+        <div className={styles.signupFormField}>
+          <label className={styles.signupFormLabel} htmlFor="password">
+            Votre mot de passe
+          </label>
           <input
+            id="password"
+            className={styles.signupFormInput}
             type="password"
             placeholder="Password"
             {...signupForm("password", {
@@ -94,12 +108,6 @@ export default function Signup() {
                 value: 8,
                 message: "Password must contain at least 8 characters",
               },
-              // pattern: {
-              //   value:
-              //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-              //   message:
-              //     "Password must contain at least 1 upper case letter, 1 lower case letter, 1 number and 1 special character.",
-              // },
             })}
           />
           {signupFormError.password && (
@@ -108,22 +116,20 @@ export default function Signup() {
             </span>
           )}
         </div>
+
         <div>
-          <button type="submit">Envoyer</button>
+          <button className={styles.signupFormButton} type="submit">
+            Envoyer
+          </button>
         </div>
       </form>
-      <div>
-        <span>Vous etes dejà inscrit? Click ici: </span>
-        <Link href="/signin">
-          <button
-            style={{
-              border: "none",
-              backgroundColor: "transparent",
-              color: "#d17307",
-            }}
-          >
-            Se connecter
-          </button>
+
+      <div className={styles.signupLoginSection}>
+        <span className={styles.signupLoginText}>
+          Vous êtes déjà inscrit? Cliquez ici:{" "}
+        </span>
+        <Link href="/signin" className={styles.signupLoginLink}>
+          <button className={styles.signupLoginButton}>Se connecter</button>
         </Link>
       </div>
     </div>

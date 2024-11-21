@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import styles from "../../styles/CreatePost.module.css";
+
+// Dynamically import react-quill with SSR disabled
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import "react-quill/dist/quill.snow.css"; // Importer les styles de base de Quill
 
 const CreatePost = () => {
   const [formData, setFormData] = useState({
@@ -13,7 +18,9 @@ const CreatePost = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [wordCount, setWordCount] = useState(0);
 
+  // Mettre à jour l'état du formulaire à chaque changement dans les inputs
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -22,6 +29,16 @@ const CreatePost = () => {
     }));
   };
 
+  // Mettre à jour la description et le comptage des mots à chaque modification
+  const handleDescriptionChange = (value) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      description: value,
+    }));
+    setWordCount(value.split(" ").filter((word) => word !== "").length); // Compter les mots non vides
+  };
+
+  // Soumettre le formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!selectedImage) {
@@ -60,10 +77,12 @@ const CreatePost = () => {
     }
   };
 
+  // Sélectionner une image de la galerie
   const handleImageSelect = (imageUrl) => {
     setSelectedImage(imageUrl);
   };
 
+  // Rechercher des images basées sur les tags
   const fetchImagesFromUnsplash = async () => {
     if (!formData.tags.trim()) {
       setImages([]);
@@ -96,95 +115,142 @@ const CreatePost = () => {
     }
   };
 
+  // Charger des images chaque fois que les tags ou la soumission changent
   useEffect(() => {
     if (!submitted) {
       fetchImagesFromUnsplash();
     }
   }, [formData.tags, submitted]);
 
+  // Calculer le nombre de mots dans la description et gérer la dynamique
+  useEffect(() => {
+    if (formData.description) {
+      const words = formData.description
+        .split(" ")
+        .filter((word) => word !== "");
+      setWordCount(words.length);
+    }
+  }, [formData.description]);
+
   return (
-    <div className={styles.containerFormPost}>
-      <h1 className={styles.title}>
-        Créer un article en function d'une image{" "}
-      </h1>
+    <div className={styles.createPostContainer}>
+      <h1 className={styles.header}>Créer un article avec une image</h1>
       <form onSubmit={handleSubmit}>
-        <div className={styles.div}>
-          <label htmlFor="title">Titre</label>
+        {/* Title Input */}
+        <div className={styles.inputContainer}>
+          <label htmlFor="title" className={styles.label}>
+            Titre
+          </label>
           <input
             type="text"
             name="title"
             value={formData.title}
             onChange={handleInputChange}
+            className={styles.input}
           />
         </div>
 
-        <div className={styles.div}>
-          <label htmlFor="description">Description</label>
-          <textarea
-            name="description"
+        {/* Description Input (ReactQuill) */}
+        <div className={styles.inputContainer}>
+          <label htmlFor="description" className={styles.label}>
+            Description
+          </label>
+          <ReactQuill
             value={formData.description}
-            onChange={handleInputChange}
+            onChange={handleDescriptionChange}
             placeholder="Écrivez quelque chose..."
+            theme="snow"
+            className={styles.quillEditor}
           />
+          <p className={styles.wordCount}>{wordCount} mots</p>{" "}
         </div>
 
-        <div className={styles.div}>
-          <label htmlFor="category"></label>
+        {/* Category Dropdown */}
+        <div className={styles.inputContainer}>
+          <label htmlFor="category" className={styles.label}>
+            Catégorie
+          </label>
           <select
             name="category"
             id="category"
             value={formData.category}
             onChange={handleInputChange}
+            className={styles.select}
           >
             <option value="">Sélectionner une catégorie</option>
             <option value="town">Ville</option>
             <option value="flower">Fleurs</option>
             <option value="landscape">Paysage</option>
             <option value="animal">Animaux</option>
-            <option value="food">Nouriture</option>
+            <option value="food">Nourriture</option>
             <option value="nature">Nature</option>
             <option value="other">Autre</option>
           </select>
         </div>
 
-        <div className={styles.div}>
-          <label htmlFor="tags">Tags : </label>
+        {/* Tags Input */}
+        <div className={styles.inputContainer}>
+          <label htmlFor="tags" className={styles.label}>
+            Tags :{" "}
+          </label>
           <input
             type="text"
             name="tags"
             value={formData.tags}
             onChange={handleInputChange}
+            className={styles.input}
           />
         </div>
 
+        {/* Image Gallery */}
         {loading ? (
-          <p>Chargement des images...</p>
+          <p className={styles.loadingText}>Chargement des images...</p>
         ) : (
           images.length > 0 && (
             <div className={styles.imageGallery}>
-              <h3>Choisissez une image :</h3>
+              <h3 className={styles.imageGalleryTitle}>
+                Choisissez une image :
+              </h3>
               {images.map((imageUrl, index) => (
                 <div
                   key={index}
                   className={styles.imageItem}
                   onClick={() => handleImageSelect(imageUrl)}
                 >
-                  <img src={imageUrl} alt={`Image ${index}`} />
+                  <img
+                    src={imageUrl}
+                    alt={`Image ${index}`}
+                    className={styles.image}
+                  />
                 </div>
               ))}
             </div>
           )
         )}
 
+        {/* Display Selected Image */}
         {selectedImage && (
-          <div className={styles.selectedImage}>
-            <h3>Image sélectionnée :</h3>
-            <img src={selectedImage} alt="Image sélectionnée" />
+          <div className={styles.selectedImageContainer}>
+            <h3 className={styles.selectedImageTitle}>Image sélectionnée :</h3>
+            <img
+              src={selectedImage}
+              alt="Image sélectionnée"
+              className={styles.selectedImage}
+            />
           </div>
         )}
 
-        <div className={styles.div}>
-          <button type="submit">Envoyer</button>
+        {/* Submit Button */}
+        <div className={styles.submitButtonContainer}>
+          <button
+            type="submit"
+            className={styles.submitButton}
+            disabled={
+              !formData.title || !formData.description || !selectedImage
+            }
+          >
+            Envoyer
+          </button>
         </div>
       </form>
     </div>

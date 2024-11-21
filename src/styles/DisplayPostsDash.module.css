@@ -1,0 +1,63 @@
+
+
+/* Styles pour la section des articles */
+.sectionPostsUser {
+    margin: 20px;
+    padding: 20px;
+    /* margin-left: 200px; */
+    height: 100%;
+  }
+  
+  .titlePostUser{
+    text-align: center;
+    margin: 10px;
+  }
+  /* Container pour le tableau */
+  .tableContainer {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  /* Styles du tableau */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  /* Styles pour l'entête du tableau */
+  .table thead {
+    background-color: #f4f4f4;
+  }
+  
+  .table th,
+  .table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #a07e7e;
+  }
+  
+  /* Styles pour les images dans le tableau */
+  .postImage {
+    width: 50px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+ 
+
+  .deleteButton,
+  .updateButton
+  {
+    background: none;
+  }
+  .deleteButton img,
+  .updateButton img
+  {
+    
+    width:20px;
+
+  }
+  
+ 

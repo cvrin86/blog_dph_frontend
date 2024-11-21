@@ -1,0 +1,18 @@
+
+.sidebar{
+    margin-top: 50px;
+  
+}
+.createPostBtn{
+    padding: 10px;
+    margin: 50px ;
+    box-shadow: 1px 2px 2px #eaeaee;
+}
+.createPostBtn button{
+    border-radius: 50%;
+    font-size: 1.3rem;
+    color: #dbdbe7;
+    width: 20vw;
+    height: 10vh;
+   
+ }

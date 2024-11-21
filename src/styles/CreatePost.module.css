@@ -1,16 +1,123 @@
-/* CreatePost.module.css */
+/* Conteneur global du formulaire */
+.createPostContainer {
+  max-width: 800px;
+  height: auto;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-.containerFormPost {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-.title{
-    color:#16551e;
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+.header {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.inputContainer {
+  margin-bottom: 20px;
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.quillEditor {
+  width: 100%;
+  height: 200px;
+  background-color: #ffffff;
+  margin-bottom: 50px;
+}
+
+.wordCount {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.loadingText {
+  font-size: 1rem;
+  color: #666;
+  text-align: center;
+}
+
+.imageGallery {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.imageGalleryTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.imageItem {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+.imageItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.selectedImageContainer {
+  margin-top: 20px;
+}
+
+.selectedImageTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.selectedImage {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 4px;
+}
+
+.submitButtonContainer {
+  text-align: center;
+}
+
+.submitButton {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submitButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }

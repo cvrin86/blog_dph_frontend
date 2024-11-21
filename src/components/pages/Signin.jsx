@@ -44,15 +44,19 @@ export default function Signin() {
   };
 
   return (
-    <div className={styles.containerSignin}>
-      <h1>Se connecter</h1>
+    <div className={styles.signinContainer}>
+      <h1 className={styles.signinTitle}>Se connecter</h1>
       <form
-        className={styles.formSignin}
+        className={styles.signinForm}
         onSubmit={handleSigninSubmit(handleSignin)}
       >
-        <div>
-          <label htmlFor="">Votre username</label>
+        <div className={styles.signinFormField}>
+          <label className={styles.signinFormLabel} htmlFor="username">
+            Votre username
+          </label>
           <input
+            id="username"
+            className={styles.signinFormInput}
             type="text"
             placeholder="Username"
             {...signinForm("username", { required: "Username is required" })}
@@ -64,9 +68,13 @@ export default function Signin() {
           )}
         </div>
 
-        <div>
-          <label htmlFor="">Votre mot de passe</label>
+        <div className={styles.signinFormField}>
+          <label className={styles.signinFormLabel} htmlFor="password">
+            Votre mot de passe
+          </label>
           <input
+            id="password"
+            className={styles.signinFormInput}
             type="password"
             placeholder="Password"
             {...signinForm("password", { required: "Password is required" })}
@@ -79,21 +87,17 @@ export default function Signin() {
         </div>
 
         <div>
-          <button type="submit">Envoyer</button>
+          <button className={styles.signinFormButton} type="submit">
+            Envoyer
+          </button>
         </div>
       </form>
-      <div>
-        <span>Vous n'avez pas de compte? S'inscrire ici: </span>
-        <Link href="/signup">
-          <button
-            style={{
-              border: "none",
-              backgroundColor: "transparent",
-              color: "#d17307",
-            }}
-          >
-            S'inscrire
-          </button>
+      <div className={styles.signinRegisterSection}>
+        <span className={styles.signinRegisterText}>
+          Vous n'avez pas de compte? S'inscrire ici:{" "}
+        </span>
+        <Link href="/signup" className={styles.signinRegisterLink}>
+          <button className={styles.signinRegisterButton}>S'inscrire</button>
         </Link>
       </div>
     </div>

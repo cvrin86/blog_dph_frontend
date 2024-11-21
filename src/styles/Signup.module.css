@@ -1,15 +1,111 @@
-
-
-.containerSignup{
-    margin: 20px;
+/* Conteneur principal du formulaire d'inscription */
+.signupContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f3f4f6;
+    padding: 20px;
+    font-family: "Arial", sans-serif;
+  }
+  
+  /* Titre du formulaire d'inscription */
+  .signupTitle {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
     text-align: center;
-   
-}
-.formSignup{
-   margin:60px
-}
-
-.errorMsg{
-    color:rgb(211, 44, 44);
-
-}
+  }
+  
+  /* Formulaire d'inscription */
+  .signupForm {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Conteneur des champs de formulaire */
+  .signupFormField {
+    margin-bottom: 20px;
+  }
+  
+  /* Label des champs de formulaire */
+  .signupFormLabel {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  /* Champs de saisie */
+  .signupFormInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .signupFormInput:focus {
+    border-color: #d17307;
+    outline: none;
+    box-shadow: 0 0 5px rgba(209, 115, 7, 0.5);
+  }
+  
+  /* Bouton d'envoi */
+  .signupFormButton {
+    background-color: #d17307;
+    color: white;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signupFormButton:hover {
+    background-color: #a16105;
+  }
+  
+  /* Message d'erreur */
+  .errorMsg {
+    color: #e74c3c;
+    font-size: 0.875rem;
+    margin-top: 5px;
+  }
+  
+  /* Section de connexion pour les utilisateurs déjà inscrits */
+  .signupLoginSection {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .signupLoginText {
+    color: #366642;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  
+  .signupLoginLink {
+    text-decoration: none;
+  }
+  
+  .signupLoginButton {
+    text-decoration: underline;
+    font-size: 1rem;
+    padding: 0;
+    background-color: transparent;
+    color: #3a1f86;
+    font-weight: 900;
+    cursor: pointer;
+  }
+  

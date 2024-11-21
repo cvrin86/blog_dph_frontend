@@ -1,15 +1,111 @@
-
-
-.containerSignin{
-    margin: 20px;
+/* Conteneur principal du formulaire */
+.signinContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #e8ebf1;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Titre du formulaire */
+  .signinTitle {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
     text-align: center;
-   
-}
-.formSignin{
-   margin:60px
-}
-
-.errorMsg{
-    color:rgb(211, 44, 44);
-
-}
+  }
+  
+  /* Formulaire */
+  .signinForm {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Conteneur des champs de formulaire */
+  .signinFormField {
+    margin-bottom: 20px;
+  }
+  
+  /* Label des champs de formulaire */
+  .signinFormLabel {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  /* Champs de saisie */
+  .signinFormInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .signinFormInput:focus {
+    border-color: #d17307;
+    outline: none;
+    box-shadow: 0 0 5px rgba(209, 115, 7, 0.5);
+  }
+  
+  /* Bouton d'envoi */
+  .signinFormButton {
+    background-color: #d17307;
+    color: white;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signinFormButton:hover {
+    background-color: #a16105;
+  }
+  
+  /* Message d'erreur */
+  .errorMsg {
+    color: #e74c3c;
+    font-size: 0.875rem;
+    margin-top: 5px;
+  }
+  
+  /* Section d'inscription */
+  .signinRegisterSection {
+    text-align: center;
+    margin-top: 60px;
+  }
+  
+  .signinRegisterText {
+    color: #366642;
+    font-size: 1rem;
+   font-weight: 700;
+  }
+  
+  .signinRegisterLink {
+    text-decoration: none;
+  }
+  
+  .signinRegisterButton {
+    text-decoration: underline;
+    font-size: 1rem;
+    padding: 0;
+    background-color: transparent;
+    color: #3a1f86;
+    font-weight: 900;
+    cursor: pointer;
+  }
+  

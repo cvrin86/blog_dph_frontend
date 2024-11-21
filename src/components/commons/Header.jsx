@@ -3,21 +3,28 @@ import Link from "next/link";
 import styles from "../../styles/Header.module.css";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout } from "@/reducers/user";
+import { logout } from "@/reducers/user";
 import { useRouter } from "next/router";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuUserOpen, setIsMenuUserOpen] = useState(false);
   const router = useRouter();
 
   // Fonction pour ouvrir le menu
   const handleMenuOpen = () => {
     setIsMenuOpen(true);
   };
+  const handleMenuUserOpen = () => {
+    setIsMenuUserOpen(true);
+  };
 
   // Fonction pour fermer le menu
   const handleMenuClose = () => {
     setIsMenuOpen(false);
+  };
+  const handleMenuUserClose = () => {
+    setIsMenuUserOpen(false);
   };
 
   const dispatch = useDispatch();
@@ -46,7 +53,53 @@ export default function Header() {
             {user.username}
           </span>
         </p>
-        <button onClick={handleLogout}>Se déconnecter</button>
+        {!isMenuUserOpen && (
+          <div className={styles.menuIconUser} onClick={handleMenuUserOpen}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              fill="currentColor"
+              class="bi bi-person"
+              viewBox="0 0 16 16"
+            >
+              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+            </svg>
+          </div>
+        )}
+
+        {/* Icône close - visible uniquement si le menu est ouvert */}
+        {isMenuUserOpen && (
+          <div className={styles.menuIcon} onClick={handleMenuUserClose}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              fill="currentColor"
+              className="bi bi-x"
+              viewBox="0 0 16 16"
+            >
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+            </svg>
+          </div>
+        )}
+
+        {/* Menu vertical */}
+        <nav
+          className={`${styles.menuUser} ${
+            isMenuUserOpen ? styles.menuOpen : ""
+          }`}
+        >
+          <Link href="" onClick={handleMenuUserClose}>
+            Mon profil
+          </Link>
+          <Link href="/dashboard" onClick={handleMenuUserClose}>
+            Tableau de bord
+          </Link>
+          <Link href="" onClick={handleMenuUserClose}>
+            <button onClick={handleLogout}>Se deconnecter</button>
+          </Link>
+        </nav>
       </div>
     );
   } else {
@@ -98,15 +151,23 @@ export default function Header() {
 
       {/* Menu vertical */}
       <nav className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : ""}`}>
-        <Link href="/">Accueil</Link>
-        <Link href="/blog">Blog</Link>
-        <Link href="/about">A propos</Link>
-        <Link href="/contact">Nous contacter</Link>
+        <Link href="/" onClick={handleMenuClose}>
+          Accueil
+        </Link>
+        <Link href="/blog" onClick={handleMenuClose}>
+          Blog
+        </Link>
+        <Link href="/about" onClick={handleMenuClose}>
+          A propos
+        </Link>
+        <Link href="/contact" onClick={handleMenuClose}>
+          Nous contacter
+        </Link>
       </nav>
 
       {/* Logo */}
-      <div className={styles.logo}>
-        <Image src="/logo.png" width={100} height={80} alt="logo" />
+      <div className={styles.logoContainer}>
+        <img src="/logo.png" alt="logo" />
       </div>
 
       {/* Affichage du bouton de connexion ou déconnexion */}
