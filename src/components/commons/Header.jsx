@@ -47,31 +47,59 @@ export default function Header() {
     authSection = (
       <div className={styles.auth}>
         <p style={{ fontSize: "1.2rem" }}>
-          Salut{" "}
-          <span style={{ fontSize: "1.5rem", color: "teal" }}>
-            {" "}
+          Hello{" "}
+          <span style={{ color: "teal" }}>
+            
             {user.username}
           </span>
         </p>
         {!isMenuUserOpen && (
           <div className={styles.menuIconUser} onClick={handleMenuUserOpen}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              fill="currentColor"
-              class="bi bi-person"
-              viewBox="0 0 16 16"
-            >
-              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-            </svg>
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 200 200"
+  width="30"
+  height="30"
+>
+  {/* <!-- Corps du chat --> */}
+  <circle cx="100" cy="100" r="90" fill="#FFD700" />
+  
+  {/* <!-- Yeux --> */}
+  <circle cx="65" cy="70" r="15" fill="#FFFFFF" />
+  <circle cx="135" cy="70" r="15" fill="#FFFFFF" />
+  <circle cx="65" cy="70" r="7" fill="#000000" />
+  <circle cx="135" cy="70" r="7" fill="#000000" />
+{/*   
+  <!-- Oreilles --> */}
+  <polygon points="45,20 65,10 85,20" fill="#FFD700" />
+  <polygon points="115,20 135,10 155,20" fill="#FFD700" />
+  
+  {/* <!-- Museau --> */}
+  <ellipse cx="100" cy="120" rx="25" ry="10" fill="#FFFFFF" />
+  <circle cx="100" cy="120" r="5" fill="#000000" />
+  
+  {/* <!-- Moustaches --> */}
+  <line x1="75" y1="120" x2="50" y2="130" stroke="#000000" stroke-width="2" />
+  <line x1="125" y1="120" x2="150" y2="130" stroke="#000000" stroke-width="2" />
+  <line x1="75" y1="125" x2="50" y2="135" stroke="#000000" stroke-width="2" />
+  <line x1="125" y1="125" x2="150" y2="135" stroke="#000000" stroke-width="2" />
+
+  {/* <!-- Bouche --> */}
+  <path
+    d="M85,140 Q100,150 115,140"
+    stroke="red"
+    stroke-width="10"
+    fill="none"
+  />
+</svg>
+
           </div>
         )}
 
         {/* Icône close - visible uniquement si le menu est ouvert */}
         {isMenuUserOpen && (
           <div className={styles.menuIcon} onClick={handleMenuUserClose}>
-            <svg
+            {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
               height="32"
@@ -80,7 +108,7 @@ export default function Header() {
               viewBox="0 0 16 16"
             >
               <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-            </svg>
+            </svg> */}
           </div>
         )}
 

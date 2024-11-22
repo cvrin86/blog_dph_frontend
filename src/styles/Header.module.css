@@ -69,6 +69,11 @@ height: auto;
   .menu a:hover {
     background-color: #f0f0f0;  /* Changer la couleur du fond au survol des liens */
   }
+  .auth{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
   
 
   
