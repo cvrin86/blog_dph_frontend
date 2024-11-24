@@ -20,6 +20,7 @@
 
 .containerComponent{
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+ 
 }

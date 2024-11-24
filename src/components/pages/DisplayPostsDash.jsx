@@ -6,6 +6,7 @@ export default function DisplayPostsDash() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [deleteError, setDeleteError] = useState(null); // Ajouter un état pour gérer les erreurs de suppression
   const api = "http://localhost:5000";
   const router = useRouter();
 
@@ -55,16 +56,19 @@ export default function DisplayPostsDash() {
       }
     } catch (err) {
       console.error("Erreur:", err);
-      alert("Une erreur s'est produite lors de la suppression.");
+      setDeleteError("Une erreur s'est produite lors de la suppression."); // Définir l'erreur de suppression
       // Réajout du post en cas d'erreur
-      setPosts((prevPosts) => [...prevPosts, { _id: postId }]);
+      setPosts((prevPosts) => [
+        ...prevPosts,
+        { _id: postId, title: "Post supprimé en erreur" }, // Ajout d'un titre temporaire
+      ]);
     }
   }, []);
 
   // Rediriger vers la page de mise à jour
   const handleUpdate = useCallback(
     (postId) => {
-      router.push(`/update-post/${postId}`);
+      router.push(`/update-post/${postId}`); // Correction ici : utilisation de postId
     },
     [router]
   );
@@ -92,6 +96,7 @@ export default function DisplayPostsDash() {
     <section className={styles.sectionPostsUser}>
       <h1 className={styles.titlePostUser}>Liste des articles</h1>
       <div className={styles.tableContainer}>
+        {deleteError && <p className={styles.deleteError}>{deleteError}</p>} {/* Affichage de l'erreur de suppression */}
         <table className={styles.table}>
           <thead>
             <tr>

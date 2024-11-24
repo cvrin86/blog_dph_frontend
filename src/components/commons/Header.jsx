@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import styles from "../../styles/Header.module.css";
-import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "@/reducers/user";
 import { useRouter } from "next/router";
+import Logo from "./Logo";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,52 +47,75 @@ export default function Header() {
     authSection = (
       <div className={styles.auth}>
         <p style={{ fontSize: "1.2rem" }}>
-          Hello{" "}
-          <span style={{ color: "teal" }}>
-            
-            {user.username}
-          </span>
+          Hello <span style={{ color: "teal" }}>{user.username}</span>
         </p>
         {!isMenuUserOpen && (
           <div className={styles.menuIconUser} onClick={handleMenuUserOpen}>
-        <svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 200 200"
-  width="30"
-  height="30"
->
-  {/* <!-- Corps du chat --> */}
-  <circle cx="100" cy="100" r="90" fill="#FFD700" />
-  
-  {/* <!-- Yeux --> */}
-  <circle cx="65" cy="70" r="15" fill="#FFFFFF" />
-  <circle cx="135" cy="70" r="15" fill="#FFFFFF" />
-  <circle cx="65" cy="70" r="7" fill="#000000" />
-  <circle cx="135" cy="70" r="7" fill="#000000" />
-{/*   
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 200 200"
+              width="30"
+              height="30"
+            >
+              {/* <!-- Corps du chat --> */}
+              <circle cx="100" cy="100" r="90" fill="#FFD700" />
+
+              {/* <!-- Yeux --> */}
+              <circle cx="65" cy="70" r="15" fill="#FFFFFF" />
+              <circle cx="135" cy="70" r="15" fill="#FFFFFF" />
+              <circle cx="65" cy="70" r="7" fill="#000000" />
+              <circle cx="135" cy="70" r="7" fill="#000000" />
+              {/*   
   <!-- Oreilles --> */}
-  <polygon points="45,20 65,10 85,20" fill="#FFD700" />
-  <polygon points="115,20 135,10 155,20" fill="#FFD700" />
-  
-  {/* <!-- Museau --> */}
-  <ellipse cx="100" cy="120" rx="25" ry="10" fill="#FFFFFF" />
-  <circle cx="100" cy="120" r="5" fill="#000000" />
-  
-  {/* <!-- Moustaches --> */}
-  <line x1="75" y1="120" x2="50" y2="130" stroke="#000000" stroke-width="2" />
-  <line x1="125" y1="120" x2="150" y2="130" stroke="#000000" stroke-width="2" />
-  <line x1="75" y1="125" x2="50" y2="135" stroke="#000000" stroke-width="2" />
-  <line x1="125" y1="125" x2="150" y2="135" stroke="#000000" stroke-width="2" />
+              <polygon points="45,20 65,10 85,20" fill="#FFD700" />
+              <polygon points="115,20 135,10 155,20" fill="#FFD700" />
 
-  {/* <!-- Bouche --> */}
-  <path
-    d="M85,140 Q100,150 115,140"
-    stroke="red"
-    stroke-width="10"
-    fill="none"
-  />
-</svg>
+              {/* <!-- Museau --> */}
+              <ellipse cx="100" cy="120" rx="25" ry="10" fill="#FFFFFF" />
+              <circle cx="100" cy="120" r="5" fill="#000000" />
 
+              {/* <!-- Moustaches --> */}
+              <line
+                x1="75"
+                y1="120"
+                x2="50"
+                y2="130"
+                stroke="#000000"
+                strokeWidth="2"
+              />
+              <line
+                x1="125"
+                y1="120"
+                x2="150"
+                y2="130"
+                stroke="#000000"
+                strokeWidth="2"
+              />
+              <line
+                x1="75"
+                y1="125"
+                x2="50"
+                y2="135"
+                stroke="#000000"
+                strokeWidth="2"
+              />
+              <line
+                x1="125"
+                y1="125"
+                x2="150"
+                y2="135"
+                stroke="#000000"
+                strokeWidth="2"
+              />
+
+              {/* <!-- Bouche --> */}
+              <path
+                d="M85,140 Q100,150 115,140"
+                stroke="red"
+                strokeWidth="10"
+                fill="none"
+              />
+            </svg>
           </div>
         )}
 
@@ -142,7 +165,6 @@ export default function Header() {
 
   return (
     <header className={styles.containerHeader}>
-      {/* Icône burger - visible uniquement si le menu est fermé */}
       {!isMenuOpen && (
         <div className={styles.menuIcon} onClick={handleMenuOpen}>
           <svg
@@ -161,7 +183,6 @@ export default function Header() {
         </div>
       )}
 
-      {/* Icône close - visible uniquement si le menu est ouvert */}
       {isMenuOpen && (
         <div className={styles.menuIcon} onClick={handleMenuClose}>
           <svg
@@ -192,13 +213,7 @@ export default function Header() {
           Nous contacter
         </Link>
       </nav>
-
-      {/* Logo */}
-      <div className={styles.logoContainer}>
-        <img src="/logo.png" alt="logo" />
-      </div>
-
-      {/* Affichage du bouton de connexion ou déconnexion */}
+      <Logo />
       {authSection}
     </header>
   );

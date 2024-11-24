@@ -1,17 +1,11 @@
-/* Conteneur global du formulaire */
 .createPostContainer {
   max-width: 800px;
-  height: auto;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .header {
   font-size: 2rem;
-  font-weight: 600;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -21,103 +15,80 @@
 }
 
 .label {
-  font-size: 1rem;
-  font-weight: 500;
   display: block;
-  margin-bottom: 8px;
-  color: #333;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
-.input,
-.select {
+.input, .select {
   width: 100%;
   padding: 10px;
-  margin-top: 5px;
+  font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 1rem;
-  color: #333;
+  outline: none;
 }
 
 .quillEditor {
-  width: 100%;
   height: 200px;
-  background-color: #ffffff;
-  margin-bottom: 50px;
+  margin: 10px;
+  width: 100%;
 }
 
 .wordCount {
   font-size: 0.9rem;
-  color: #666;
-}
-
-.loadingText {
-  font-size: 1rem;
-  color: #666;
-  text-align: center;
+  text-align: right;
+  margin-top: 5px;
 }
 
 .imageGallery {
-  height: auto;
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin: 20px 0;
 }
 
-.imageGalleryTitle {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-
-.imageItem {
+.image {
   width: 100px;
   height: 100px;
-  cursor: pointer;
-}
-
-.imageItem img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
   border-radius: 4px;
+  transition: border-color 0.3s ease;
 }
 
-.selectedImageContainer {
-  margin-top: 20px;
-}
-
-.selectedImageTitle {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.selectedImage {
-  width: 100%;
-  height: auto;
-  max-width: 400px;
-  margin: 0 auto;
-  display: block;
-  border-radius: 4px;
-}
-
-.submitButtonContainer {
-  text-align: center;
+.selected {
+  border-color: #27405b;
 }
 
 .submitButton {
-  padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #007bff;
+  width: 100%;
+  padding: 12px;
+  background-color: #f97910;
   color: white;
+  font-size: 1rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .submitButton:disabled {
-  background-color: #ccc;
+  background-color: #d8c56f;
   cursor: not-allowed;
+}
+
+.submitButton:hover {
+  background-color: #f7b34c;
+}
+
+@media (max-width: 600px) {
+  .createPostContainer {
+    padding: 10px;
+  }
+
+  .header {
+    font-size: 1.5rem;
+  }
 }

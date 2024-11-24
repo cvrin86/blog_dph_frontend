@@ -1,38 +1,85 @@
+/* Container principal pour la carte de l'article */
 .postCardContainer {
-    position: relative;
-    text-align: center;
-    padding:10px;
-    margin:20px;
-    width: 250px;
-    height: auto;
-    overflow: hidden;
-    border: 1px solid gray;
-    background-color: #ffffff;
-    border-radius: 10px;
-  }
-  .imagePostCard {
-    height: 290px;
-    width: 100%;
-    object-fit: cover;
-  }
-  .titlePost {
-    font-size: 1.3rem;
-    margin: 10px 0;
-  }
-  .authorName{
-    font-size: 0.8rem;
-   margin: 10px;
-    
-  }
-  .readMoreBtn {
-    margin: 20px 0;
-    border: none;
-    background-color: #797697;
-    color:#eaeef1;
-    padding: 5px 20px;
-    border-radius: 5px;
-  }
-  .readMoreBtn a {
-    color: #ecdcdc;
-    font-size: 1.2rem;
-  }
+  display: flex; /* Disposition horizontale, comme un livre ouvert */
+  background-color: #fff; /* Fond blanc pour chaque carte */
+  border-radius: 10px; /* Coins arrondis pour un design soigné */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+  margin: 20px;
+  width: 300px; /* Largeur de la carte, plus grande pour l'effet livre */
+  height: 300px; /* Hauteur de la carte */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation au survol */
+  cursor: pointer; /* Changer le curseur pour une meilleure expérience utilisateur */
+}
+
+.postCardContainer:hover {
+  transform: scale(1.05); /* Effet d'agrandissement pour attirer l'attention */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Ombre plus marquée au survol */
+}
+
+/* Partie gauche de la carte (image/cover du livre) */
+.imagePostCard {
+  width: 100%; /* L'image occupe la moitié gauche de la carte */
+  height: 100%;
+  object-fit: cover; /* L'image remplit son espace sans déformation */
+  border-right: 4px solid #ddd; /* Séparation subtile entre l'image et le texte */
+}
+
+/* Partie droite de la carte (contenu textuel comme les pages) */
+.textContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Espacement entre les éléments */
+  width: 50%; /* Le texte occupe l'autre moitié de la carte */
+  padding: 20px;
+}
+
+/* Titre du livre (article) */
+.titlePost {
+  font-size: 1.2rem; /* Taille de police plus grande pour le titre */
+  font-weight: bold;
+  color: #333; /* Couleur sombre pour le titre */
+  margin-bottom: 10px; /* Espacement sous le titre */
+  line-height: 1.2; /* Un peu plus d'espace entre les lignes */
+}
+
+/* Description de l'article */
+.descriptionPost {
+  font-size: 1rem;
+  color: #666; /* Gris clair pour la description */
+  margin-bottom: 15px; /* Espacement sous la description */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Ajoute des "..." si trop long */
+  white-space: nowrap; /* Évite que le texte se casse en plusieurs lignes */
+}
+
+/* Nom de l'auteur */
+.authorName {
+  font-size: 1rem;
+  color: #777; /* Gris pour l'auteur */
+  font-style: italic; /* Style italique pour l'auteur */
+  text-align: right; /* Aligner à droite comme la signature d'un livre */
+}
+
+/* Style du bouton "Lire l'article" */
+.readMoreBtn {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #1f2b38;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.readMoreBtn:hover {
+  background-color: #32557a; /* Couleur bleue plus foncée au survol */
+}
+
+/* Optionnel : Personnalisation du nom de l'auteur */
+.authorName span {
+  color: rgb(45, 213, 62);
+  font-size: 1rem;
+}

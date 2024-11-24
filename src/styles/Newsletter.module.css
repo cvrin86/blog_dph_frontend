@@ -1,0 +1,139 @@
+.newsletterSection {
+  background-color: #f8f9fa; /* Fond très clair pastel */
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.newsletterContainer {
+  background-color: #ffffff; /* Fond blanc pour le conteneur */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.newsletterTitle {
+  font-size: 2rem;
+  color: #6c757d; /* Gris doux */
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.newsletterDescription {
+  font-size: 1.1rem;
+  color: #868e96; /* Gris clair */
+  margin-bottom: 30px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.newsletterInput {
+  width: 50%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 2px solid #f0e1e1; /* Bordure rose pastel */
+  border-radius: 8px;
+  background-color: #f8f9fa; /* Fond gris clair */
+  font-size: 1rem;
+  color: #495057;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.newsletterInput:focus {
+  border-color: #ff9a8b; /* Rose pastel lors du focus */
+  box-shadow: 0 0 5px rgba(255, 154, 139, 0.5); /* Ombre rose pastel */
+  outline: none;
+}
+
+.newsletterButton {
+  background-color: #f5a623; /* Jaune pastel */
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease-in-out;
+  width: 20%;
+  margin-top: 10px;
+}
+
+.newsletterButton:hover {
+  background-color: #ff9a8b; /* Changement de couleur lors du survol */
+  transform: scale(1.05);
+}
+
+.newsletterButtonDisabled {
+  background-color: #d6d6d6; /* Couleur grise quand le bouton est désactivé */
+  cursor: not-allowed;
+}
+
+.errorMessage {
+  color: #e74c3c; /* Rouge pastel pour les erreurs */
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+/* Media Queries pour rendre le formulaire responsive */
+@media (max-width: 768px) {
+  .newsletterContainer {
+    padding: 20px;
+    width: 90%;
+  }
+
+  .newsletterTitle {
+    font-size: 1.8rem; /* Réduire la taille du titre pour les petits écrans */
+  }
+
+  .newsletterDescription {
+    font-size: 1rem; /* Réduire la taille du texte pour les petits écrans */
+    margin-bottom: 20px;
+  }
+
+  .newsletterInput {
+    padding: 10px;
+    font-size: 0.9rem; /* Réduire la taille de la police sur les petits écrans */
+  }
+
+  .newsletterButton {
+    padding: 10px 20px;
+    font-size: 1rem; /* Réduire la taille du bouton sur les petits écrans */
+  }
+
+  .errorMessage {
+    font-size: 0.8rem; /* Réduire la taille du message d'erreur */
+  }
+}
+
+@media (max-width: 480px) {
+  .newsletterSection {
+    padding: 30px 10px;
+  }
+
+  .newsletterContainer {
+    padding: 15px;
+  }
+
+  .newsletterTitle {
+    font-size: 1.6rem; /* Titre plus petit sur très petits écrans */
+  }
+
+  .newsletterDescription {
+    font-size: 0.9rem; /* Réduire encore le texte pour les écrans très petits */
+    margin-bottom: 15px;
+  }
+
+  .newsletterInput {
+    padding: 8px;
+    font-size: 0.85rem; /* Texte plus petit sur les petits écrans */
+  }
+
+  .newsletterButton {
+    padding: 8px 16px;
+    font-size: 0.9rem; /* Bouton légèrement plus petit sur les petits écrans */
+  }
+}

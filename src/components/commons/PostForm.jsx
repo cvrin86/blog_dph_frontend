@@ -2,25 +2,33 @@ import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import styles from "../../styles/CreatePost.module.css";
 
-// Dynamically import react-quill with SSR disabled
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-import "react-quill/dist/quill.snow.css"; // Import Quill's styles
+import "react-quill/dist/quill.snow.css";
 
-const PostForm = ({ isEditing = false, initialData = {}, onSuccess }) => {
+const PostForm = ({ isEditing = false, initialData = null, onSuccess }) => {
   const [formData, setFormData] = useState({
-    title: initialData.title || "",
-    description: initialData.description || "",
-    category: initialData.category || "",
-    tags: initialData.tags || "",
+    title: "",
+    description: "",
+    category: "",
+    tags: "",
   });
+  const [selectedImage, setSelectedImage] = useState(null);
   const [images, setImages] = useState([]);
-  const [selectedImage, setSelectedImage] = useState(
-    initialData.imagePath || null
-  );
   const [loading, setLoading] = useState(false);
   const [wordCount, setWordCount] = useState(0);
 
-  // Update state on input change
+  useEffect(() => {
+    if (isEditing && initialData) {
+      setFormData({
+        title: initialData.title,
+        description: initialData.description,
+        category: initialData.category,
+        tags: initialData.tags,
+      });
+      setSelectedImage(initialData.imagePath[0] || null);
+    }
+  }, [isEditing, initialData]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -31,7 +39,41 @@ const PostForm = ({ isEditing = false, initialData = {}, onSuccess }) => {
     setWordCount(value.split(" ").filter((word) => word !== "").length);
   };
 
-  // Submit the form
+  const fetchImages = async () => {
+    const tagsString = String(formData.tags).trim();
+
+    if (!tagsString) {
+      setImages([]);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `http://localhost:5000/posts/get-images?tags=${encodeURIComponent(
+          tagsString
+        )}`
+      );
+      const data = await response.json();
+      setLoading(false);
+
+      if (data.imagePaths) {
+        setImages(data.imagePaths);
+      } else {
+        console.error("Aucune image trouvée.");
+        setImages([]);
+      }
+    } catch (error) {
+      console.error("Erreur lors de la recherche d'images :", error);
+      setLoading(false);
+      setImages([]);
+    }
+  };
+
+  useEffect(() => {
+    fetchImages();
+  }, [formData.tags]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -41,26 +83,21 @@ const PostForm = ({ isEditing = false, initialData = {}, onSuccess }) => {
     }
 
     const postData = { ...formData, selectedImage };
+    const url = isEditing
+      ? `http://localhost:5000/posts/update-post/${initialData._id}`
+      : "http://localhost:5000/posts/create-post";
 
     try {
-      const response = await fetch(
-        isEditing
-          ? `http://localhost:5000/posts/post/${initialData._id}`
-          : "http://localhost:5000/posts/create-post",
-        {
-          method: isEditing ? "PUT" : "POST",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(postData),
-        }
-      );
+      const response = await fetch(url, {
+        method: isEditing ? "PUT" : "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postData),
+      });
 
       const data = await response.json();
-
-      console.log(data)
-
       if (response.ok) {
         alert(
           isEditing
@@ -76,34 +113,6 @@ const PostForm = ({ isEditing = false, initialData = {}, onSuccess }) => {
       alert("Une erreur s'est produite.");
     }
   };
-
-  // Fetch images from Unsplash API
-  const fetchImages = async () => {
-    if (!formData.tags.trim()) {
-      setImages([]);
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const response = await fetch(
-        `http://localhost:5000/posts/get-images?tags=${encodeURIComponent(
-          formData.tags
-        )}`,
-        { method: "POST", credentials: "include" }
-      );
-      const data = await response.json();
-      setImages(data.imagePaths || []);
-    } catch (error) {
-      console.error("Erreur lors de la recherche d'images :", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchImages();
-  }, [formData.tags]);
 
   return (
     <div className={styles.createPostContainer}>

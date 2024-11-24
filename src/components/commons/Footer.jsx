@@ -2,15 +2,14 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../../styles/Footer.module.css";
+import Logo from "./Logo";
 
 export default function Footer() {
   const date = new Date();
-  // console.log(date);
+
   return (
     <footer className={styles.containerFooter}>
-      <div>
-        <Image src="/logo.png" width={100} height={80} alt={"logo"} />
-      </div>
+     <Logo/>
       <div>
         <nav className={styles.pagesLinks}>
           <Link href="/home">Accueil</Link>
@@ -18,10 +17,8 @@ export default function Footer() {
           <Link href="/about">A propos</Link>
           <Link href="/contact">Nous contacter</Link>
         </nav>
-
-        {/* Logo */}
       </div>
-      <hr />
+      <hr className={styles.hr} />
       <div className={styles.copyright}>
         <span>Copyright {date.getFullYear()} BlogPhoto</span>
       </div>
