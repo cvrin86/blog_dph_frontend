@@ -11,6 +11,11 @@ export default function Header() {
   const [isMenuUserOpen, setIsMenuUserOpen] = useState(false);
   const router = useRouter();
 
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
+  console.log({ userState: user.username });
+
+  // Utilisation de Redux pour l'état de l'utilisateur
   // Fonction pour ouvrir le menu
   const handleMenuOpen = () => {
     setIsMenuOpen(true);
@@ -26,9 +31,6 @@ export default function Header() {
   const handleMenuUserClose = () => {
     setIsMenuUserOpen(false);
   };
-
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.value); // Utilisation de Redux pour l'état de l'utilisateur
 
   // Fonction de déconnexion
   async function handleLogout() {
