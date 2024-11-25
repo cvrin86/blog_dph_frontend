@@ -12,6 +12,8 @@ export default function Signup() {
   const [errorMsg, setErrorMsg] = useState("");
   const router = useRouter();
 
+  const api = "http://localhost:5000";
+
   const {
     register: signupForm,
     handleSubmit: handleSignupSubmit,
@@ -22,7 +24,7 @@ export default function Signup() {
   });
 
   const handleSignup = async (data) => {
-    const res = await fetch("https://blog-dph-backend-5btts0n61-cristinavrs-projects.vercel.app/users/signup", {
+    const res = await fetch(`${api}users/signup`, {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },

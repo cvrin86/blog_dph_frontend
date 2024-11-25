@@ -7,7 +7,7 @@ export default function DisplayPostsDash() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [deleteError, setDeleteError] = useState(null); // Ajouter un état pour gérer les erreurs de suppression
-  const api = "https://blog-dph-backend-5btts0n61-cristinavrs-projects.vercel.app";
+  const api = "http://localhost:5000";
   const router = useRouter();
 
   // Charger les posts de l'utilisateur

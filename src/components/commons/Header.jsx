@@ -11,6 +11,8 @@ export default function Header() {
   const [isMenuUserOpen, setIsMenuUserOpen] = useState(false);
   const router = useRouter();
 
+  const api = "http://localhost:5000";
+
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
   console.log({ userState: user.username });
@@ -34,7 +36,7 @@ export default function Header() {
 
   // Fonction de déconnexion
   async function handleLogout() {
-    const res = await fetch("https://blog-dph-backend-5btts0n61-cristinavrs-projects.vercel.app/users/logout", {
+    const res = await fetch(`${api}/users/logout`, {
       method: "POST",
       credentials: "include", // Garde les cookies pour la session
     });

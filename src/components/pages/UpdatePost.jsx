@@ -7,6 +7,7 @@ const UpdatePost = ({ idPost }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); // Changement: stocker l'erreur spécifique
 
+  const api = "http://localhost:5000";
   const router = useRouter();
 
   useEffect(() => {
@@ -17,10 +18,9 @@ const UpdatePost = ({ idPost }) => {
       setError(null); // Réinitialiser l'erreur avant chaque nouvelle requête
 
       try {
-        const response = await fetch(
-          `https://blog-dph-backend-5btts0n61-cristinavrs-projects.vercel.app/posts/get-post/${idPost}`,
-          { credentials: "include" }
-        );
+        const response = await fetch(`${api}posts/get-post/${idPost}`, {
+          credentials: "include",
+        });
 
         if (!response.ok) {
           throw new Error("Erreur lors de la récupération du post.");
