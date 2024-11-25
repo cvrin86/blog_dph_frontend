@@ -8,7 +8,7 @@ export default function Blog() {
 
   useEffect(() => {
     async function getPosts() {
-      const api = "http://localhost:5000";
+      const api = "https://blog-dph-backend-5btts0n61-cristinavrs-projects.vercel.app";
       const response = await fetch(`${api}/posts/get-posts`);
       const data = await response.json();
       setRecentPosts(data.slice(-5));

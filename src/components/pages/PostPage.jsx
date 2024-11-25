@@ -11,7 +11,7 @@ export default function PostPage({ idPost }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const api = "http://localhost:5000";
+  const api = "https://blog-dph-backend-5btts0n61-cristinavrs-projects.vercel.app";
 
   // React Hook Form
   const {

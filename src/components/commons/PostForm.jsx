@@ -50,7 +50,7 @@ const PostForm = ({ isEditing = false, initialData = null, onSuccess }) => {
     setLoading(true);
     try {
       const response = await fetch(
-        `http://localhost:5000/posts/get-images?tags=${encodeURIComponent(
+        `https://blog-dph-backend-5btts0n61-cristinavrs-projects.vercel.app/posts/get-images?tags=${encodeURIComponent(
           tagsString
         )}`
       );
@@ -84,8 +84,8 @@ const PostForm = ({ isEditing = false, initialData = null, onSuccess }) => {
 
     const postData = { ...formData, selectedImage };
     const url = isEditing
-      ? `http://localhost:5000/posts/update-post/${initialData._id}`
-      : "http://localhost:5000/posts/create-post";
+      ? `"https://blog-dph-backend-5btts0n61-cristinavrs-projects.vercel.app/posts/update-post/${initialData._id}`
+      : "https://blog-dph-backend-5btts0n61-cristinavrs-projects.vercel.app/posts/create-post";
 
     try {
       const response = await fetch(url, {

@@ -18,7 +18,7 @@ const UpdatePost = ({ idPost }) => {
 
       try {
         const response = await fetch(
-          `http://localhost:5000/posts/get-post/${idPost}`,
+          `https://blog-dph-backend-5btts0n61-cristinavrs-projects.vercel.app/posts/get-post/${idPost}`,
           { credentials: "include" }
         );
 

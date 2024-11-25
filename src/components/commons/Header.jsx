@@ -34,7 +34,7 @@ export default function Header() {
 
   // Fonction de déconnexion
   async function handleLogout() {
-    const res = await fetch("http://localhost:5000/users/logout", {
+    const res = await fetch("https://blog-dph-backend-5btts0n61-cristinavrs-projects.vercel.app/users/logout", {
       method: "POST",
       credentials: "include", // Garde les cookies pour la session
     });

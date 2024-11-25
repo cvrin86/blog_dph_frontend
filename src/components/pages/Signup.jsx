@@ -22,7 +22,7 @@ export default function Signup() {
   });
 
   const handleSignup = async (data) => {
-    const res = await fetch("http://localhost:5000/users/signup", {
+    const res = await fetch("https://blog-dph-backend-5btts0n61-cristinavrs-projects.vercel.app/users/signup", {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
